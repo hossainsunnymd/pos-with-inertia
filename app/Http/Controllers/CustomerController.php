@@ -13,14 +13,14 @@ class CustomerController extends Controller
     public function customerPage(Request $request){
         $userId = $request->header('id');
         $customers = Customer::where('user_id', '=', $userId)->get();
-        return Inertia::render('CustomerPage',['customers' => $customers]);
+        return Inertia::render('Customer/CustomerPage',['customers' => $customers]);
     }
 
     public function customerSavePage(Request $request){
         $id=$request->query('id');
         $userId=$request->header('id');
         $customer=Customer::where('user_id','=',$userId)->where('id','=',$id)->first();
-        return Inertia::render('CustomerSavePage',['customer'=>$customer]);
+        return Inertia::render('Customer/CustomerSavePage',['customer'=>$customer]);
     }
     public function createCustomer(Request $request)
     {
@@ -76,14 +76,4 @@ class CustomerController extends Controller
 
     }
 
-    public function customerById(Request $request){
-        try{
-            $userId=$request->header('id');
-            $customerId=$request->input('id');
-            $data= Customer::where('user_id', '=', $userId)->where('id', '=', $customerId)->first();
-            return $data;
-        }catch(Exception $e){
-            return response()->json(['status' => 'failed', 'message' => 'Customer listing failed']);
-        }
-    }
 }

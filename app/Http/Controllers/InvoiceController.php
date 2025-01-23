@@ -56,7 +56,7 @@ class InvoiceController extends Controller
             $list= Invoice::where('user_id','=',$userId)
             ->with('customer','invoiceProducts.product')->get();
 
-            return Inertia::render('InvoiceListPage',['list'=>$list]);
+            return Inertia::render('Invoice/InvoiceListPage',['list'=>$list]);
 
 
     }

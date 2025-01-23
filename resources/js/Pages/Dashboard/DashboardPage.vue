@@ -1,6 +1,6 @@
 <script setup>
-import SideNavLayout from '../Layout/SideNavLayout.vue';
-import SummaryList from '../Components/Dashboard/SummaryList.vue'
+import SideNavLayout from '../../Layout/SideNavLayout.vue';
+import SummaryList from '../../Components/Dashboard/SummaryList.vue'
 </script>
 
 <template>

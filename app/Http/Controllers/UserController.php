@@ -14,23 +14,23 @@ class UserController extends Controller
 {
 
     public function loginPage() {
-        return Inertia::render('LoginPage');
+        return Inertia::render('Auth/LoginPage');
     }
 
     public function registrationPage(){
-        return Inertia::render('RegistrationPage');
+        return Inertia::render('Auth/RegistrationPage');
     }
 
     public function sendOtpPage(){
-        return Inertia::render('OTPSendPage');
+        return Inertia::render('Auth/OTPSendPage');
     }
 
     public function verifyOtpPage(){
-        return Inertia::render('VerifyOTPPage');
+        return Inertia::render('Auth/VerifyOTPPage');
     }
 
     public function resetPasswordPage(){
-        return Inertia::render('ResetPasswordPage');
+        return Inertia::render('Auth/ResetPasswordPage');
     }
 
     public function userRegistration(Request $request) {

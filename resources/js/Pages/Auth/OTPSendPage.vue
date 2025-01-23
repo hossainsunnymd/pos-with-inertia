@@ -1,5 +1,5 @@
 <script setup>
-import SendOTPForm from '../Components/User/SendOTPForm.vue'
+import SendOTPForm from '../../Components/User/SendOTPForm.vue'
 </script>
 
 <template>

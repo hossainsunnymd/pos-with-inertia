@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function productPage(Request $request){
         $userId=$request->header('id');
         $products=Product::where('user_id','=',$userId)->get();
-        return Inertia::render('ProductPage',['products'=>$products]);
+        return Inertia::render('Product/ProductPage',['products'=>$products]);
     }
 
     public function productSavePage(Request $request){
@@ -25,7 +25,7 @@ class ProductController extends Controller
         $product=Product::where('user_id','=',$userId)->where('id','=',$productId)->first();
         $categories=Category::where('user_id','=',$userId)->get();
 
-        return Inertia::render('ProductSavePage',['product'=>$product,'categories'=>$categories]);
+        return Inertia::render('Product/ProductSavePage',['product'=>$product,'categories'=>$categories]);
     }
     public function createProduct(Request $request){
          try{
@@ -64,17 +64,6 @@ class ProductController extends Controller
             return redirect()->route('productSavePage')->with(['status'=>false,'message'=>$e->getMessage()],200);
          }
 
-    }
-
-
-    public function productById(Request $request){
-        try{
-            $userId=$request->header('id');
-            $productId=$request->input('id');
-            return Product::where('user_id','=',$userId)->where('id','=',$productId)->first();
-        }catch(Exception $e){
-            return response()->json(['status'=>'failed','message'=>'Product listing failed']);
-        }
     }
 
     public function updateProduct(Request $request){

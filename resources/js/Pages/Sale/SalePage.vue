@@ -1,6 +1,6 @@
 <script setup>
-import SideNavLayout from '../Layout/SideNavLayout.vue'
-import CreateSaleForm from '../Components/Sale/CreateSaleForm.vue'
+import SideNavLayout from '../../Layout/SideNavLayout.vue'
+import CreateSaleForm from '../../Components/Sale/CreateSaleForm.vue'
 </script>
 
 <template>

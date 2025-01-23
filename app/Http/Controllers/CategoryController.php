@@ -15,14 +15,14 @@ class CategoryController extends Controller
    public function categoryPage(Request $request){
     $userId = $request->header('id');
     $categories = Category::where('user_id', '=', $userId)->get();
-    return Inertia::render('CategoryPage', ['categories' => $categories]);
+    return Inertia::render('Category/CategoryPage', ['categories' => $categories]);
     }
 
     public function categorySavePage(Request $request){
         $id=$request->query('id');
         $userId=$request->header('id');
         $category=Category::where('user_id','=',$userId)->where('id','=',$id)->first();
-        return Inertia::render('CategorySavePage',['category'=>$category]);
+        return Inertia::render('Category/CategorySavePage',['category'=>$category]);
     }
     public function createCategory(Request $request)
     {

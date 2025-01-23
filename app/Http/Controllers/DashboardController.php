@@ -23,7 +23,7 @@ class DashboardController extends Controller
         'vat'=>Invoice::where('user_id','=',$request->header('id'))->sum('vat')
         ];
 
-        return Inertia::render('DashboardPage',['data'=>$data]);
+        return Inertia::render('Dashboard/DashboardPage',['data'=>$data]);
     }
 
     public function salePage(Request $request){
@@ -31,6 +31,6 @@ class DashboardController extends Controller
         $customers=Customer::where('user_id','=',$userId)->get();
         $products=Product::where('user_id','=',$userId)->where('unit','>',0)->get();
 
-        return Inertia::render('SalePage',['customers'=>$customers,'products'=>$products]);
+        return Inertia::render('Sale/SalePage',['customers'=>$customers,'products'=>$products]);
     }
 }

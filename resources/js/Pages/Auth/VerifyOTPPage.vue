@@ -1,5 +1,5 @@
 <script setup>
-import VerifyOTPForm from '../Components/User/VerifyOTPForm.vue'
+import VerifyOTPForm from '../../Components/User/VerifyOTPForm.vue'
 </script>
 
 <template>
