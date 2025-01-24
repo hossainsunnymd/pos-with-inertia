@@ -13,7 +13,7 @@ const customer=ref();
 const page = usePage();
 
 const searchValue = ref();
-const searchField = ref(["name"]);
+const searchField = ref(["customer.name"]);
 const headers = [
     { text: "No", value: "id" },
     { text: "Name", value: "customer.name" },

@@ -77,7 +77,7 @@ if (id !== 0 && page.props.product !== null) {
                 >
                 <select v-model="form.category_id"  name="category" id="category" class="border text-sm rounded-lg block w-full p-2.5">
                   <option value="" selected>select category</option>
-                  <option v-for="page in page.props.categories" :key="page.id" :value="page.id">{{ page.name }}></option>
+                  <option v-for="page in page.props.categories" :key="page.id" :value="page.id">{{ page.name }}</option>
                 </select>
             </div>
             <div class="mb-4">

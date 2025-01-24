@@ -1,6 +1,6 @@
 <template>
 
-    <div class="grid grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="min-h-[500px] border border-gray-200 rounded-md px-4 py-2">
             <h1 class="text-lg font-bold text-gray-700 text-end">Invoice</h1>
             <h1 class="text-lg font-bold text-gray-700 text-end">{{ new Date().toISOString().slice(0, 10) }}</h1>
@@ -140,8 +140,6 @@ const customersHeaders = [
 ];
 
 const productList=ref([]);
-const exitsQty = ref(0);
-const currentPrice=ref(0);
 const addProduct = (id,img_url,name,price,productUnit) => {
 
    const product={
@@ -150,10 +148,9 @@ const addProduct = (id,img_url,name,price,productUnit) => {
        name:name,
        price:price,
        unit:1,
+       exitsQty:productUnit-1,
+       productPrice:price
    };
-
-   exitsQty.value=productUnit--;
-   currentPrice.value=price;
    productList.value.push(product);
    calculateTotal();
 };
@@ -166,12 +163,11 @@ const removeProduct = (index)=>{
 
 const addQty = (id)=>{
     const product = productList.value.find((product) => product.id === id);
-    if(exitsQty.value>1){
+    if(product.exitsQty>=product.unit){
         product.unit++;
-        exitsQty.value--;
-        product.price=currentPrice.value*product.unit;
+        product.price=parseFloat(product.productPrice)*parseFloat(product.unit);
     }
-    // alert(exitsQty.value);
+
     calculateTotal();
 }
 
@@ -179,11 +175,10 @@ const removeQty = (id)=>{
     const product = productList.value.find((product) => product.id === id);
     if(product.unit>1){
         product.unit--;
-        exitsQty.value++;
-        product.price=product.price-currentPrice.value;
+        product.price-=product.productPrice;
     }
     calculateTotal();
-    alert(exitsQty.value);
+
 }
 
 const customer=reactive({
@@ -211,7 +206,7 @@ const calculateTotal=()=>{
     calculate.vat=0;
     calculate.payable=0;
     productList.value.forEach((product)=>{
-        calculate.total+=parseFloat(product.price);
+    calculate.total+=parseFloat(product.price);
 
     });
     if(calculate.discountP==0 && calculate.vatP==0){
@@ -252,7 +247,9 @@ const createInvoice=()=>{
                 productList.value=[];
                 calculate.total=0;
                 calculate.discount=0;
+                calculate.discountP=0;
                 calculate.vat=0;
+                calculate.vatP=0;
                 calculate.payable=0;
                 toaster.success(page.props.flash.message);
                 setTimeout(() => {
