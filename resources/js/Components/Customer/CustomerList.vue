@@ -27,6 +27,7 @@ const deleteCustomer = (id) => {
 
 <template>
     <div class="p-4 bg-[#f8f8f8]">
+        <h1 class="text-2xl font-bold mb-4">Customer List</h1>
         <input
             v-model="searchValue"
             type="text"

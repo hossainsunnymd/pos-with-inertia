@@ -1,5 +1,7 @@
 <script setup>
 import { Link, useForm,router,usePage } from '@inertiajs/vue3';
+import { createToaster } from "@meforma/vue-toaster";
+const toaster = createToaster({ });
 
 const page = usePage();
 const form = useForm({
@@ -8,15 +10,20 @@ const form = useForm({
 
 function submitForm() {
     if(form.email==''){
-        alert('Email is required');
+        toaster.error('Email is required');
     }else{
+        document.getElementById("background").classList.remove("hidden");
         form.post('/send-otp',{
             onSuccess: () => {
                 if(page.props.flash.status===true){
-                    router.get("/verify-otp-page")
+                    toaster.success(page.props.flash.message);
+                    document.getElementById("background").classList.add("hidden");
+                    setTimeout(() => {
+                        router.get("/verify-otp-page")
+                    },500);
                 }
                 else {
-                    alert(page.props.flash.message)
+                    toaster.error(page.props.flash.message)
                 }
             }
         });
@@ -25,6 +32,7 @@ function submitForm() {
 </script>
 
 <template>
+<div id="background" class="absolute h-[100vh] w-[100%] bg-black opacity-10 hidden"></div>
 <!-- component -->
 <div class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
   <div class="max-w-md w-full bg-white rounded-xl shadow-lg p-8">

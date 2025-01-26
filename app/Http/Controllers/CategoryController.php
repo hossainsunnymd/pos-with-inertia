@@ -14,7 +14,7 @@ class CategoryController extends Controller
 
    public function categoryPage(Request $request){
     $userId = $request->header('id');
-    $categories = Category::where('user_id', '=', $userId)->get();
+    $categories = Category::where('user_id', '=', $userId)->withCount('products')->get();
     return Inertia::render('Category/CategoryPage', ['categories' => $categories]);
     }
 

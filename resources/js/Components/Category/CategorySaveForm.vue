@@ -30,6 +30,9 @@ if(id !==0 && list !== null ){
 }
 
 const submitForm = () => {
+    if(form.name==''){
+        toaster.error("Please enter category name");
+    }else{
     form.post(URL, {
         preserveScroll: true,
         onSuccess: () => {
@@ -44,6 +47,7 @@ const submitForm = () => {
             }
         }
     })
+}
 }
 
 </script>

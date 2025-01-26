@@ -1,5 +1,8 @@
 <script setup>
 import { Link, useForm, router,usePage } from '@inertiajs/vue3';
+import { createToaster } from "@meforma/vue-toaster";
+
+const toaster = createToaster({ });
 const page = usePage();
 const form = useForm({
     otp: '',
@@ -10,10 +13,13 @@ function submitForm() {
         preserveScroll: true,
         onSuccess: () => {
             if(page.props.flash.status===true){
-                router.get("/reset-password-page")
+                toaster.success(page.props.flash.message);
+                setTimeout(() => {
+                    router.get("/reset-password-page")
+                },500)
             }
             else {
-                alert(page.props.flash.message)
+                toaster.error(page.props.flash.message)
             }
         }
     })

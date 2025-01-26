@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -33,4 +34,5 @@ class DashboardController extends Controller
 
         return Inertia::render('Sale/SalePage',['customers'=>$customers,'products'=>$products]);
     }
+
 }

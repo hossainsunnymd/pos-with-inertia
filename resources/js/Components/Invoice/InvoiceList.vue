@@ -50,6 +50,7 @@ const showDetails = (id) => {
 <template>
 
     <div class="p-4 bg-[#f8f8f8]">
+        <h1 class="text-2xl font-bold mb-4">Invoices</h1>
         <InvoiceDetails v-model:show="show" :customer="customer"/>
         <input
             v-model="searchValue"

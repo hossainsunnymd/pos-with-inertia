@@ -34,14 +34,13 @@ class UserController extends Controller
     }
 
     public function userRegistration(Request $request) {
+        $user=$request->validate([
+            'name'=>'required|string',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:8',
+            'mobile'=>'required',
+        ]);
         try{
-            $user=$request->validate([
-                'name'=>'string|required',
-                'email'=>'string|required|unique:users',
-                'password'=>'string|required',
-                'mobile'=>'string|required',
-            ]);
-
               User::create($user);
               $data=['message'=>'User registered Successfully','status'=>true,'error'=>''];
               return redirect()->route('registrationPage')->with($data);
@@ -56,8 +55,8 @@ class UserController extends Controller
 
     public function userLogin(Request $request) {
            $request->validate([
-               'email'=>'string|required',
-               'password'=>'string|required',
+               'email'=>'required|email',
+               'password'=>'required|min:8',
            ]);
            $count=User::where('email','=',$request->email)
                     ->where('password','=',$request->password)->first();
@@ -78,7 +77,7 @@ class UserController extends Controller
 
     public function sendOtp(Request $request){
         $request->validate([
-            'email'=>'string|required',
+            'email'=>'required|email',
         ]);
         $email=$request->email;
         $count=User::where('email','=',$email)->count();
@@ -110,9 +109,10 @@ class UserController extends Controller
     }
 
     public function resetPassword(Request $request){
-        try{
+
             $request->validate([
-                'password'=>'string|required',
+                'password'=>'required|min:8',
+                'confirm_password'=>'required|same:password|min:8',
             ]);
             $password=$request->password;
             $userEmail=$request->header('email');
@@ -120,9 +120,8 @@ class UserController extends Controller
                 User::where('email','=',$userEmail)->update(['password'=>$password]);
                 $request->session()->flush();
                return redirect()->route('resetPasswordPage')->with(['status'=>true,'message'=>'Password reset successfully','error'=>'']);
-            }
+            }else{
 
-        }catch(Exception $e){
             return redirect()->route('resetPasswordPage')->with(['status'=>false,'message'=>'Password reset failed','error'=>'something went wrong']);
         }
 

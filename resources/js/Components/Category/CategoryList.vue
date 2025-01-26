@@ -10,6 +10,7 @@ const searchField = ["category"];
 const headers = [
     { text: "No", value: "id" },
     { text: "Category", value: "name", sortable: true },
+    { text: "Products", value: "products_count", sortable: true },
     { text: "Action", value: "action" },
 ];
 
@@ -26,6 +27,7 @@ const deleteCategory = (id) => {
 
 <template>
     <div class="p-4 bg-[#f8f8f8]">
+        <h1 class="text-2xl font-bold mb-4">Category List</h1>
         <input
             v-model="searchValue"
             type="text"

@@ -34,6 +34,7 @@ if(page.props.flash.status===true){
 
 <template>
     <div class="p-4 bg-[#f8f8f8]">
+        <h1 class="text-2xl font-bold mb-4">Product List</h1>
         <input
             v-model="searchValue"
             type="text"

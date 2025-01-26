@@ -1,5 +1,8 @@
 <script setup>
 import { useForm,router,usePage, Link } from '@inertiajs/vue3';
+import { createToaster } from "@meforma/vue-toaster";
+
+const toaster = createToaster({ });
 
 const page = usePage();
 const form = useForm({
@@ -8,22 +11,21 @@ const form = useForm({
 })
 
 function submitForm() {
-    if(form.email==''){
-        alert('Email is required');
-    }else if(form.password==''){
-        alert('Password is required');
-    }else{
+
         form.post('/user-login',{
             onSuccess: () => {
                 if(page.props.flash.status===true){
-                    router.get("/dashboard-page")
+                    toaster.success(page.props.flash.message);
+                    setTimeout(() => {
+                        router.get("/dashboard-page")
+                    },500)
                 }
                 else {
-                    alert(page.props.flash.message)
+                    toaster.error(page.props.flash.message)
                 }
             }
         });
-    }
+
 }
 </script>
 
@@ -40,6 +42,7 @@ function submitForm() {
           type="email"
           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
         />
+        <p class="text-red-500">{{ form.errors.email }}</p>
       </div>
 
       <div>
@@ -47,8 +50,8 @@ function submitForm() {
         <input v-model="form.password"
           type="password"
           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
-
         />
+        <p class="text-red-500">{{ form.errors.password }}</p>
       </div>
 
       <div class="flex items-center justify-between">
@@ -66,7 +69,7 @@ function submitForm() {
 
     <div class="mt-6 text-center text-sm text-gray-600">
       Don't have an account?
-      <a href="#" class="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</a>
+      <Link href="/registration-page" class="text-indigo-600 hover:text-indigo-500 font-medium">Sign up</Link>
     </div>
   </div>
 </div>

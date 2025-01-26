@@ -31,6 +31,13 @@ if(id !==0 && list !== null ){
 }
 
 const submitForm = () => {
+    if(form.name==''){
+        toaster.error("Name is required");
+    }else if(form.email==''){
+        toaster.error("Email is required");
+    }else if(form.mobile==''){
+        toaster.error("Mobile is required");
+    }else{
     form.post(URL,{
         preserveScroll: true,
         onSuccess: () => {
@@ -45,6 +52,7 @@ const submitForm = () => {
             }
         }
     });
+}
 }
 </script>
 

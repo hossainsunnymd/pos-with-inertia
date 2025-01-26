@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\SessionAuthenticateMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::get('/send-otp-page', [UserController::class, 'sendOtpPage'])->name('send
 Route::get('/verify-otp-page', [UserController::class, 'verifyOtpPage'])->name('verifyOtpPage');
 Route::get('/reset-password-page', [UserController::class, 'resetPasswordPage'])->name('resetPasswordPage');
 
+
 // ================== Middleware Protected Routes ==================
 Route::middleware([SessionAuthenticateMiddleware::class])->group(function () {
 
@@ -32,6 +34,11 @@ Route::middleware([SessionAuthenticateMiddleware::class])->group(function () {
     Route::get('/dashboard-page', [DashboardController::class, 'dashboardPage'])->name('dashboardPage');
     Route::get('/sale-page', [DashboardController::class, 'salePage'])->name('salePage');
     Route::get('/invoice-page', [InvoiceController::class, 'listInvoice'])->name('listInvoice');
+
+
+    Route::get('profile-page', [ProfileController::class, 'profilePage'])->name('profilePage');
+    Route::post('update-profile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+
 
     // Category Routes
     Route::post('/create-category', [CategoryController::class, 'createCategory'])->name('createCategory');

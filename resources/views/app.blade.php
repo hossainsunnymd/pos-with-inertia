@@ -7,8 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-      <script src="https://cdn.tailwindcss.com"></script>
-    @vite('resources/js/app.js')
+    @vite(['resources/js/app.js'])
     @inertiaHead
 </head>
 <body>

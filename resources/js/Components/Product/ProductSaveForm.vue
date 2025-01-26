@@ -43,6 +43,17 @@ if (id !== 0 && page.props.product !== null) {
 
 
     const submitForm = () => {
+        if(form.name==''){
+            toaster.error('Name is required');
+        }else if(form.price==''){
+            toaster.error('Price is required');
+        }else if(form.qty==''){
+            toaster.error('Quantity is required');
+        }else if(form.img_url==''){
+            toaster.error('Image is required');
+        }else if(form.category_id==''){
+            toaster.error('Category is required');
+        }else{
 
         form.post(URL, {
             preserveScroll: true,
@@ -57,6 +68,7 @@ if (id !== 0 && page.props.product !== null) {
                 }
             },
         });
+    }
     };
 
 

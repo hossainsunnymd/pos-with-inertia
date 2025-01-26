@@ -232,6 +232,13 @@ const form=useForm({
 
 
 const createInvoice=()=>{
+    if(customer.name==''){
+        toaster.error('Customer is required');
+
+    }else if(productList.value.length==0){
+        toaster.error('Product is required');
+    }else{
+
     form.cus_id=customer.id;
     form.products=productList.value;
     form.total=calculate.total;
@@ -262,6 +269,7 @@ const createInvoice=()=>{
             }
         }
     })
+}
 }
 
 
