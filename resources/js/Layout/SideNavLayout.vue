@@ -1,6 +1,6 @@
 <script setup>
 import { Link,usePage } from "@inertiajs/vue3";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import NavLayout from "./NavLayout.vue";
 
 const page = usePage();
@@ -16,7 +16,7 @@ function toggleSidebar() {
 </script>
 
 <template>
-    <NavLayout v-model:show="show" :name="name" :user="page.props.name"/>
+    <NavLayout v-model:show="show" />
     <div id="header" class="h-[60px]  md:hidden transition duration-300 fixed top-0 left-0 right-0 z-50">
         <button  @click="toggleSidebar" id="menu-toggle" class=" p-2 ml-1 mt-1 bg-gray-200 rounded-md "> <span class="material-icons">menu</span></button>
     </div>
@@ -83,6 +83,16 @@ function toggleSidebar() {
                     >
                         <span class="material-icons">shopping_cart</span>
                         <span class="ml-3">Create Sale</span>
+                    </Link>
+                </li>
+
+                <li>
+                    <Link
+                        href="/report-page"
+                        class="flex items-center px-4 py-2 text-gray-600 rounded-lg hover:bg-gray-200 hover:text-gray-900"
+                    >
+                        <span class="material-icons">report</span>
+                        <span class="ml-3">Report</span>
                     </Link>
                 </li>
             </ul>

@@ -6,7 +6,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:show"]);
-
+console.log(props.customer);
 const printInvoice = () => {
     const printContent = document.getElementById("print-invoice").innerHTML;
 
@@ -35,7 +35,7 @@ const printInvoice = () => {
         class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50 z-50"
     >
         <div
-            class="bg-white border rounded-lg shadow-lg p-3 flex basis-auto w-1/2"
+            class="bg-white border rounded-lg shadow-lg p-3 h-[700px] w-1/2 overflow-auto"
         >
             <div class="w-full">
                 <div id="print-invoice">

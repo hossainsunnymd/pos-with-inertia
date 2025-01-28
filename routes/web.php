@@ -36,8 +36,8 @@ Route::middleware([SessionAuthenticateMiddleware::class])->group(function () {
     Route::get('/invoice-page', [InvoiceController::class, 'listInvoice'])->name('listInvoice');
 
 
-    Route::get('profile-page', [ProfileController::class, 'profilePage'])->name('profilePage');
-    Route::post('update-profile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/profile-page', [ProfileController::class, 'profilePage'])->name('profilePage');
+    Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 
 
     // Category Routes
@@ -73,4 +73,9 @@ Route::middleware([SessionAuthenticateMiddleware::class])->group(function () {
     // Product Pages
     Route::get('/product-page', [ProductController::class, 'productPage'])->name('productPage');
     Route::get('/product-save-page', [ProductController::class, 'productSavePage'])->name('productSavePage');
+
+    //report Pages
+    Route::get('/report-page', [DashboardController::class, 'reportPage'])->name('reportPage');
+    Route::get('/sales-report', [DashboardController::class, 'salesReport'])->name('salesReport');
+
 });

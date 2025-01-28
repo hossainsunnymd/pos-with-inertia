@@ -16,8 +16,7 @@ class CategoryController extends Controller
    public function categoryPage(Request $request){
     $userId = $request->header('id');
     $categories = Category::where('user_id', '=', $userId)->withCount('products')->get();
-    $name=User::where('id','=',$userId)->first()->name;
-    return Inertia::render('Category/CategoryPage', ['categories' => $categories,'name'=>$name]);
+    return Inertia::render('Category/CategoryPage', ['categories' => $categories]);
     }
 
     public function categorySavePage(Request $request){

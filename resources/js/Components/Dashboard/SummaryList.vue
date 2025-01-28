@@ -1,5 +1,6 @@
 <script setup>
 import { usePage } from '@inertiajs/vue3';
+import axios from 'axios';
 const page = usePage();
 </script>
 
@@ -78,7 +79,7 @@ const page = usePage();
                 <div class="flex-shrink pl-1 pr-4"><i class="fas fa-inbox fa-2x fa-fw fa-inverse"></i></div>
                 <div class="flex-1 text-right">
                     <h5 class="text-white">Products</h5>
-                    <h3 class="text-white text-3xl">3 <span class="text-pink-400"><i class="fas fa-caret-up"></i></span></h3>
+                    <h3 class="text-white text-3xl"> {{ page.props.data['products'] }} <span class="text-pink-400"><i class="fas fa-caret-up"></i></span></h3>
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@
                 <h1> Discount:  {{ calculate.discount }} </h1>
              </div>
              <div>
-                <button @click="createInvoice()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Confirm</button>
+                <button @click="createInvoice()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-2 rounded">Confirm</button>
             </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                 </template>
                 <template #item-action="{ id,img_url,name,price,unit }">
                     <button
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-2 rounded"
                         @click="addProduct(id,img_url,name,price,unit)"
                     >
                         Add
@@ -97,7 +97,7 @@
             >
                 <template #item-action="{name,id }">
                     <button
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-2 rounded"
                         @click="addCustomer(name,id)"
                     >
                         Add
