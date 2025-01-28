@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -15,7 +16,8 @@ class CategoryController extends Controller
    public function categoryPage(Request $request){
     $userId = $request->header('id');
     $categories = Category::where('user_id', '=', $userId)->withCount('products')->get();
-    return Inertia::render('Category/CategoryPage', ['categories' => $categories]);
+    $name=User::where('id','=',$userId)->first()->name;
+    return Inertia::render('Category/CategoryPage', ['categories' => $categories,'name'=>$name]);
     }
 
     public function categorySavePage(Request $request){

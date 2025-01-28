@@ -1,7 +1,12 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { Link,usePage } from "@inertiajs/vue3";
 import { ref, onMounted } from "vue";
 import NavLayout from "./NavLayout.vue";
+
+const page = usePage();
+
+
+
 const props = defineProps(["name"]);
 const show = ref(false);
 function toggleSidebar() {
@@ -11,7 +16,7 @@ function toggleSidebar() {
 </script>
 
 <template>
-    <NavLayout v-model:show="show" :name="name"/>
+    <NavLayout v-model:show="show" :name="name" :user="page.props.name"/>
     <div id="header" class="h-[60px]  md:hidden transition duration-300 fixed top-0 left-0 right-0 z-50">
         <button  @click="toggleSidebar" id="menu-toggle" class=" p-2 ml-1 mt-1 bg-gray-200 rounded-md "> <span class="material-icons">menu</span></button>
     </div>

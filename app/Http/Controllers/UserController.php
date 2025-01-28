@@ -63,10 +63,11 @@ class UserController extends Controller
            if($count != null){
                 $request->session()->put('email',$count->email);
                 $request->session()->put('user_id',$count->id);
-               $data=['message'=>'User login Successfully','status'=>true,'error'=>''];
+                $name=$count->name;
+               $data=['message'=>'User login Successfully','status'=>true,'error'=>'','name'=>$name];
                return redirect()->route('loginPage')->with($data);
            }else{
-                return redirect()->route('loginPage')->with(['message'=>'User login Fail','status'=>false,'error'=>'something went wrong']);
+                return redirect()->route('loginPage')->with(['message'=>'User login Fail','status'=>false,'error'=>'something went wrong','name'=>'']);
            }
     }
 
