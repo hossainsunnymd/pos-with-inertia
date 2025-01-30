@@ -10,6 +10,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\SessionAuthenticateMiddleware;
 use Illuminate\Support\Facades\Route;
 
+//HomePage
+
+Route::get('/',[DashboardController::class,'home'])->name('home');
+
+
 // ================== User Routes ==================
 
 Route::post('user-registration', [UserController::class, 'userRegistration'])->name('userRegistration');

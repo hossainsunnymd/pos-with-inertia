@@ -13,6 +13,9 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
+    public function home(){
+        return Inertia::render('Home/HomePage');
+    }
     public function dashboardPage(Request $request){
 
      $data= [
