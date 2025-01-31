@@ -21,7 +21,7 @@ function toggleShow() {
             <button type="button" class="text-3xl">
                 <i class="bx bx-menu"></i>
             </button>
-            <div>Logo</div>
+            <img src="../Assets/vue.svg" alt="">
         </div>
 
         <!-- button profile -->

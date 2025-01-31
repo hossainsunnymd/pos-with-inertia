@@ -26,7 +26,7 @@ function toggleSidebar() {
         id="sidebar"
         class="w-64 bg-white shadow-lg flex flex-col fixed inset-y-0 left-0 transform -translate-x-full transition-transform duration-300 md:translate-x-0 z-10 mt-14"
     >
-        <div class="p-4 border-b">
+        <div class="p-4">
             <h1 class="text-lg font-bold text-gray-700">Dashboard</h1>
         </div>
         <nav class="flex-1 p-4">

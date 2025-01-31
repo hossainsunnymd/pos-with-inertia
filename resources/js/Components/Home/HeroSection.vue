@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-        <!-- <img class="object-cover object-center rounded h-[500px] w-[600px]" alt="hero" src=" {{asset('images/hero.png')}}"> -->
+        <img class="object-cover object-center rounded h-[500px] w-[600px]" alt="hero" src="../../Assets/hero.png">
       </div>
     </div>
   </section>

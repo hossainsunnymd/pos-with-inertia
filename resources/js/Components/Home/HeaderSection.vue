@@ -12,8 +12,8 @@
         <span class="ml-3 text-xl"> Sales Management </span>
       </a>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a href="/login" class="mr-5 hover:text-gray-900">Sign in</a>
-        <a href="/registration" class="mr-5 hover:text-gray-900">Sign up</a>
+        <a href="/login-page" class="mr-5 hover:text-gray-900">Sign in</a>
+        <a href="/registration-page" class="mr-5 hover:text-gray-900">Sign up</a>
       </nav>
     </div>
   </header>
