@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price',15,2);
             $table->integer('unit');
-            $table->string('img_url');
+            $table->string('img_url')->nullable();
+            $table->string('barcode_url')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
