@@ -2,7 +2,10 @@
 import { ref } from "vue";
 
 const props = defineProps({
-    productImage: String,
+    productImage:{
+        type: [String, File],
+        default: null
+    },
 });
 const currentImage = props.productImage ? props.productImage : null;
 const preview = ref(currentImage);

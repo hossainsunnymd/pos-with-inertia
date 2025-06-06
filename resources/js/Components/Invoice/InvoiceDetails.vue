@@ -6,7 +6,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:show"]);
-console.log(props.customer);
+
 const printInvoice = () => {
     const printContent = document.getElementById("print-invoice").innerHTML;
 
