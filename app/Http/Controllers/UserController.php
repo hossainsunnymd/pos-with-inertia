@@ -72,8 +72,9 @@ class UserController extends Controller
     }
 
     public function userLogout(Request $request) {
-         $request->session()->flush();
-         return redirect()->route('loginPage');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     public function sendOtp(Request $request){
